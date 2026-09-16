@@ -1,0 +1,27 @@
+# SpectralConv（`hard/frequency/spectral_conv`）
+
+| 项 | 内容 |
+|----|------|
+| 分类 | frequency |
+| 难度 | hard |
+| 实现模型 | 分治（蝶形） |
+| 数学定义 | `频域卷积 (FFT 定理)` |
+| 输入 / 输出 | 见 design.md（实现时定 dtype/shape） |
+| 关键考点 | 见下 |
+| 书写顺序 | 本级第 40 题 |
+| 状态 | ⬜ |
+
+## 关键考点（CUDA）
+
+- 蝶形网络的级间依赖：每级一次 kernel，还是分块内多级
+- 位反转重排的合并访存；twiddle 因子的读取模式
+- cuFFT 对照：它对哪些规模做了特化
+
+## 说明
+
+- 本目录为**算子骨架**：`README.md`(卡片) + `design.md`(设计模板)；实现时先填 design，再长出 `naive.cu` / `optimized.cu` / `library.md` / `bench.md`（工作流见[根 README](../../README.md)）。
+- 验收：CPU golden 通过 + compute-sanitizer 通过；**完成以优化闭环为标志**（三版对比有数据）。
+
+## 参考
+
+- cuFFT 文档

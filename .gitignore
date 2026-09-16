@@ -1,0 +1,15 @@
+# 编译产物
+*.o
+*.obj
+*.out
+*.exe
+a.out
+build/
+cmake-build-*/
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
